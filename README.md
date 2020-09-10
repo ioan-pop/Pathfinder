@@ -1,6 +1,7 @@
 # Pathfinder
 
-Visual pathfinding algorithm. Made with React (and love).
+Visual pathfinding algorithm. Made with React (and love).  
+[Check it out!] (https://ioan-pop.github.io/Pathfinder/)  
 
 ## Algorithms
 
