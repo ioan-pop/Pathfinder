@@ -46,6 +46,7 @@ class grid extends Component {
 
         if(!this.state.startSquare) {
             currentGrid[square.y][square.x].startSquare = true;
+            currentGrid[square.y][square.x].searchedSquare = true;
             this.setState({startSquare: square});
         } else if (!this.state.endSquare) {
             currentGrid[square.y][square.x].endSquare = true;
@@ -99,21 +100,52 @@ class grid extends Component {
         
         this.searchInterval = setInterval(() => {
             this.searchNextSquare();
-            this.searchStack.splice(0,1);
         }, 10);
     }
 
     breadthFirstSearchNextSquare(currentSquare) {
-        let endFound = (currentSquare.y > 0 ? this.searchSquare(currentSquare.x, currentSquare.y - 1, currentSquare) : false) ||
-            (currentSquare.x < this.state.grid[0].length - 1 ? this.searchSquare(currentSquare.x + 1, currentSquare.y, currentSquare) : false) ||
-            (currentSquare.y < this.state.grid.length - 1 ? this.searchSquare(currentSquare.x, currentSquare.y + 1, currentSquare) : false) ||
-            (currentSquare.x > 0 ? this.searchSquare(currentSquare.x - 1, currentSquare.y, currentSquare) : false);
+        let endFound;
+        let checkNextIf = true;
+
+        if (currentSquare.y > 0) {
+            let topSquare = this.state.grid[currentSquare.y - 1][currentSquare.x];
+            if (!topSquare.searchedSquare) {
+                checkNextIf = false;
+                endFound = this.searchSquare(topSquare.x, topSquare.y, currentSquare);
+            }
+        }
+        
+        if (checkNextIf && (currentSquare.x < this.state.grid[0].length - 1)) {
+            let rightSquare = this.state.grid[currentSquare.y][currentSquare.x + 1];
+            if(!rightSquare.searchedSquare) {
+                checkNextIf = false;
+                endFound = this.searchSquare(rightSquare.x, rightSquare.y, currentSquare);
+            }
+        }
+        
+        if (checkNextIf && (currentSquare.y < this.state.grid.length - 1)) {
+            let bottomSquare = this.state.grid[currentSquare.y + 1][currentSquare.x];
+            if(!bottomSquare.searchedSquare){
+                checkNextIf = false;
+                endFound = this.searchSquare(bottomSquare.x, bottomSquare.y, currentSquare);
+            }
+        }
+        
+        if (checkNextIf && (currentSquare.x > 0)) {
+            let leftSquare = this.state.grid[currentSquare.y][currentSquare.x - 1];
+            if(!leftSquare.searchedSquare) {
+                checkNextIf = false;
+                endFound = this.searchSquare(leftSquare.x, leftSquare.y, currentSquare);
+            }
+        } 
+        
+        if (checkNextIf) {
+            this.searchStack.splice(0,1);
+            endFound = false;            
+            this.searchNextSquare();
+        }
 
         return endFound;
-    }
-
-    depthFirstSearchNextSquare() {
-
     }
 
     searchNextSquare() {
