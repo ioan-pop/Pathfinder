@@ -1,7 +1,7 @@
 # Pathfinder
 
 Visual pathfinding algorithm. Made with React (and love).  
-[Check it out!] (https://ioan-pop.github.io/Pathfinder/)  
+[Check it out!](https://ioan-pop.github.io/Pathfinder/)  
 
 ## Algorithms
 
@@ -15,4 +15,6 @@ A*
 Implement info modal on launch  
 Implement algorithms  
 Reset algorithm  
-Add multiple destinations
+Add multiple destinations  
+User editable number of squares  
+User editable speed of search
