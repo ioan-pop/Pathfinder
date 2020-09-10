@@ -1,6 +1,6 @@
 # Pathfinder
 
-Visual pathfinding algorithm. Made with React.
+Visual pathfinding algorithm. Made with React (and love).
 
 ## Algorithms
 
@@ -11,7 +11,7 @@ A*
 
 ## TODOs
 
-Implement info modal on launch
-Implement algorithms
-Reset algorithm
+Implement info modal on launch  
+Implement algorithms  
+Reset algorithm  
 Add multiple destinations
