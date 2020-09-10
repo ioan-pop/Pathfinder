@@ -1,6 +1,6 @@
 {
   "name": "pathfinder",
-  "homepage": "https://github.com/ioan-pop/Pathfinder",
+  "homepage": "https://ioan-pop.github.io/Pathfinder/",
   "version": "0.1.0",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
