@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import Grid from '../Grid/Grid';
 import $ from 'jquery';
+import styles from './Wrapper.module.css'
 
 class wrapper extends Component {
-    state = {
-        calculatedCells: false
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            showModal: !localStorage.getItem('skipInstructions'),
+            calculatedCells: false
+        }
     }
 
     componentDidMount() {
@@ -42,9 +48,35 @@ class wrapper extends Component {
         });
     }
 
+    instructionsConfirmHandler() {
+        if ($('#dontShowCheckbox').is(':checked')) {
+            localStorage.setItem('skipInstructions', true);
+        }
+
+        this.setState({showModal: false});
+    }
+
     render() {
+        let modal = this.state.showModal ? (
+            <div className={styles.InstructionsModalWrapper}>
+                <div className={styles.InstructionsModal}>
+                    <div style={{marginBottom: '15px', fontSize: '24px'}}>Instructions</div>
+                    <div>1. Click anywhere on the grid to create a starting position</div>
+                    <div>2. Click anywhere on the grid to create a ending position</div>
+                    <div>3. Optionally click (or drag) any additional squares to create wall squares</div>
+                    <div>4. Select algorith on the menu on the right</div>
+                    <div>5. Click start to begin the search</div>
+                    <div style={{marginTop: '15px', fontSize: '14px', color: '#333'}}>
+                        <input type="checkbox" id="dontShowCheckbox"/>Don't show this again
+                    </div>
+                    <button style={{marginTop: '15px'}} onClick={this.instructionsConfirmHandler.bind(this)}>Okay</button>
+                </div>
+            </div>
+        ) : null;
+
         return(
             <div>
+                { modal }
                 {
                     this.state.calculatedCells ?
                     (<Grid rows={this.state.rows} columns={this.state.columns} squareWidth={this.state.squareWidth} squareHeight={this.state.squareHeight}/>) :

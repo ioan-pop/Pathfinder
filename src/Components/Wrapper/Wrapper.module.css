@@ -1,0 +1,20 @@
+.InstructionsModalWrapper {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.85);
+    width: 100vw;
+    height: 100vh;
+}
+
+.InstructionsModal {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 30px;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

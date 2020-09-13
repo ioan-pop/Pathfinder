@@ -376,7 +376,7 @@ class grid extends Component {
                                 </select>
                             </div>
                         </div>
-                        <div>
+                        <div style={{display: 'inline-grid'}}>
                             <button 
                                 disabled={!this.state.startSquare || !this.state.endSquare} 
                                 onClick={() => {this.startSearch()}}>
