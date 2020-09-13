@@ -7,13 +7,12 @@ Visual pathfinding algorithm. Made with React (and love).
 
 Breadth first  
 Depth first  
-Best first (or Informed)
-A*
+Best first (or Informed) (To be implemented)
+A* (To be implemented)
 
 ## TODOs
 
 Implement info modal on launch  
-Implement algorithms  
 Reset algorithm  
 Add multiple destinations  
 User editable number of squares  
