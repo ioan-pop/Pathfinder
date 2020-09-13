@@ -13,7 +13,7 @@ Additional clicks (or click and drag) will create wall squares (dark blue)
 
 Breadth first  
 Depth first  
-Best first (or Informed) (To be implemented)
+Best first (or Informed) (To be implemented)  
 A* (To be implemented)
 
 ## TODOs
