@@ -26,7 +26,7 @@ class wrapper extends Component {
         if (wWidth > 2000) {
             columns = 40;
         } else if (wWidth > 1000) {
-            columns = 30;
+            columns = 25;
         } else {
             columns = 10;
         }
