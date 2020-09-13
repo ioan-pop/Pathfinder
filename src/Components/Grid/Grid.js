@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import styles from './Grid.module.css';
+import Square from '../Square/Square';
 import _ from 'lodash';
 import $ from 'jquery';
 
@@ -59,24 +60,6 @@ class grid extends Component {
         }
 
         this.setState({grid: currentGrid});
-    }
-
-    getClassName(square) {
-        let additionalStyles = '';
-
-        if (square.startSquare) {
-            additionalStyles = ' ' + styles.StartSquare;
-        } else if (square.endSquare) {
-            additionalStyles = ' ' + styles.EndSquare;
-        } else if (square.wallSquare) {
-            additionalStyles = ' ' + styles.WallSquare;
-        } else if (square.pathSquare) {
-            additionalStyles = ' ' + styles.PathSquare;
-        } else if (square.searchedSquare) {
-            additionalStyles = ' ' + styles.SearchedSquare;
-        }
-
-        return styles.Square + additionalStyles;
     }
 
     startSearch() {
@@ -337,21 +320,14 @@ class grid extends Component {
                     {
                         row.map((column, index) => {
                             return (
-                                <span 
-                                    key={index} 
-                                    className={this.getClassName(column)} 
-                                    onClick={() => {this.selectSquare(column)}}
-                                    onMouseEnter={() => this.state.mouseDown ? this.selectSquare(column) : null}
-                                    style={{height: this.props.squareHeight + "px", width: this.props.squareWidth + "px"}}>
-                                    {
-                                        this.state.showNumbers ?
-                                        <span
-                                            className={styles.SquareNumbers}>
-                                            {column.x}, {column.y}
-                                        </span> :
-                                        null
-                                    }
-                                </span>
+                                <Square 
+                                    key={index}
+                                    column={column}
+                                    clicked={() => {this.selectSquare(column)}}
+                                    mouseEnter={() => this.state.mouseDown ? this.selectSquare(column) : null}
+                                    squareHeight={this.props.squareHeight}
+                                    squareWidth={this.props.squareWidth}
+                                    showNumbers={this.state.showNumbers} />
                             );
                         })
                     }
